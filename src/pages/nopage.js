@@ -3,6 +3,8 @@ const NoPage = () => {
   return (
     <div className="page">
       <div className="page-title-container">
+        <h1 className="page-title">Oops</h1>
+        {/* <h2 className="page-subtitle"></h2> */}
         <h2 className="page-category">
           This page doesn't exist. Let's go back to <Link to="/">home</Link>.
         </h2>

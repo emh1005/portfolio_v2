@@ -4,7 +4,8 @@ import AnimatedCursor from "react-animated-cursor";
 import Navbar from "./components/navbar";
 import {
   //MemoryRouter as Router,
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,

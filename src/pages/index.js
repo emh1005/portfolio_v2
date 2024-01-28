@@ -40,6 +40,25 @@ const Home = () => {
     }
   };
 
+  const scrollUp = () => {
+    if (currentPage > 1) {
+      ref.current.scroll({
+        top: ref.current.scrollTop - ref.current.offsetHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+  
+  const scrollDown = () => {
+    if (currentPage < numPages) {
+      ref.current.scroll({
+        top: ref.current.scrollTop + ref.current.offsetHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
+
   useEffect(() => {
     const handleScroll = () => {
       const pageIndex =
@@ -124,21 +143,6 @@ const Home = () => {
       </div>
       <div className="project-wrapper" ref={ref}>
         <Link
-          to="/designsystem"
-          onMouseEnter={() => handleMouseEnter("view")}
-          onMouseLeave={handleMouseLeave}
-          className="proj-button"
-        >
-          <Project
-            title="Design System"
-            subtitle="Information Architecture||UX Research||UI Redesign"
-            img="ds"
-            pageIndex={1}
-            currentPage={currentPage}
-            numPages={numPages}
-          />
-        </Link>
-        <Link
           to="/movie"
           onMouseEnter={() => handleMouseEnter("view")}
           onMouseLeave={handleMouseLeave}
@@ -148,6 +152,21 @@ const Home = () => {
             title="Movie"
             subtitle="A Movie Recommendation App||App development||UI/UX Design"
             img="movie"
+            pageIndex={1}
+            currentPage={currentPage}
+            numPages={numPages}
+          />
+        </Link>
+        <Link
+          to="/designsystem"
+          onMouseEnter={() => handleMouseEnter("view")}
+          onMouseLeave={handleMouseLeave}
+          className="proj-button"
+        >
+          <Project
+            title="Design System"
+            subtitle="Information Architecture||UX Research||UI Redesign"
+            img="ds"
             pageIndex={2}
             currentPage={currentPage}
             numPages={numPages}
