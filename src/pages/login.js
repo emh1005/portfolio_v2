@@ -6,6 +6,10 @@ function Login({ authenticate }) {
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const navigate = useNavigate();
 
+  window.onpopstate = () => {
+    navigate("/");
+  };
+
   const handlePasswordChange = (event) => {
     setAttemptedSubmit(false);
     setPassword(event.target.value);

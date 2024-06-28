@@ -15,7 +15,7 @@ const Project = (props) => {
           <>
             <h1 className="proj-title">{props.title}</h1>
             <h2 className="proj-subtitle">{subtitleElements}</h2>
-            <div className="proj-line"></div>
+            {/* <div className="proj-line"></div> */}
             <img
               src={`/img/home-${props.img}.png`}
               alt={props.title}
@@ -25,7 +25,7 @@ const Project = (props) => {
               src={`/img/home-${props.img}-bg.png`}
               className="proj-img proj-img-sub"
             />
-            <div className="proj-line-side"></div>
+            {/* <div className="proj-line-side"></div> */}
             <p className="proj-index">
               Work {props.pageIndex} of {props.numPages}
             </p>

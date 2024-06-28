@@ -5,9 +5,9 @@ const HRPortal = () => {
 
       <div className="page-title-container">
         <h1 className="page-title">Employee HR Portal</h1>
-        <h2 className="page-subtitle">E.Sun Bank // 2020.09</h2>
+        <h2 className="page-subtitle">E.Sun Bank // 2021.05</h2>
         <h2 className="page-category">
-          Information Architecture
+          Info Architecture
           <br />
           UX Research
           <br />
@@ -21,7 +21,6 @@ const HRPortal = () => {
           functions and systems to create a smooth and uncomplicated user
           experience.
         </p>
-
       </div>
 
       <div className="content-container">

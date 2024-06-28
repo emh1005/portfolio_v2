@@ -8,7 +8,7 @@ const About = () => {
         style={{ height: "100vh" }}
       />
       <div className="page-title-container">
-        <h1 className="page-title">Frontend Developer &amp; UX Desginer</h1>
+        <h1 className="page-title">Frontend Developer &amp; Interaction Desginer</h1>
         {/* <h2 className="page-subtitle"></h2> */}
         {/* <h2 className="page-category">
           Let's Chat! Email me at <a href="mailto:em@emhuang.com">em@emhuang.com</a>
@@ -16,7 +16,7 @@ const About = () => {
 
         <p className="page-desc-link">
           Let's Chat! Email me at{" "}
-          <a href="mailto:em@emhuang.com">em@emhuang.com</a>
+          <a href="mailto:emily@emhuang.com">emily@emhuang.com</a>
         </p>
         <p className="page-desc">
           I'm a full-time bookworm and a part-time designer and developer. I

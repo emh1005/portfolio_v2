@@ -6,6 +6,11 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { useParallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
 
+const isMobile = () => {
+  const ua = navigator.userAgent;
+  return /Android|Mobi/i.test(ua);
+};
+
 const Home = () => {
   // const parallax = useParallax({
   //   rotate: [0, 360],
@@ -16,11 +21,13 @@ const Home = () => {
   //   </div>
   // );
   const ref = useRef();
+  // const topRef = useRef();
+  // const bottomRef = useRef();
   const [currentPage, setCurrentPage] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [cursorClass, setCursorClass] = useState("");
   const [cursorText, setCursorText] = useState("");
-  const numPages = 3; // update the number of projects!!!
+  const numPages = 5; // update the number of projects!!!
 
   const scrollLeft = () => {
     if (currentPage > 1) {
@@ -48,7 +55,7 @@ const Home = () => {
       });
     }
   };
-  
+
   const scrollDown = () => {
     if (currentPage < numPages) {
       ref.current.scroll({
@@ -58,11 +65,18 @@ const Home = () => {
     }
   };
 
+  const scrollContent = (direction) => {
+    ref.current.scrollBy({
+      top: direction * ref.current.offsetHeight,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       const pageIndex =
-        Math.round(ref.current.scrollLeft / ref.current.offsetWidth) + 1;
+        Math.round(ref.current.scrollTop / ref.current.offsetHeight) + 1;
+      // Math.round(ref.current.scrollLeft / ref.current.offsetWidth) + 1;
       setCurrentPage(pageIndex);
     };
 
@@ -95,53 +109,72 @@ const Home = () => {
     setCursorText("");
   };
 
+  // useEffect(() => {
+  //   const propagateScroll = (e) => {
+  //     e.preventDefault();
+  //     ref.current.scrollTop += e.deltaY;
+  //   };
+
+  //   topRef.current.addEventListener('wheel', propagateScroll);
+  //   bottomRef.current.addEventListener('wheel', propagateScroll);
+
+  //   return () => {
+  //     topRef.current.removeEventListener('wheel', propagateScroll);
+  //     bottomRef.current.removeEventListener('wheel', propagateScroll);
+  //   };
+  // }, []);
+
   return (
-    //   // <div
-    //   //   style={{
-    //   //     // display: "flex",
-    //   //   //  height: "100vh",
-    //   //   //   height: "calc(100vh - 200px)",
-    //   //   //  // margin: "100px auto",
-    //   //   //   padding: "100px 0",
-    //   //   }}
-    //   // >
-    //   <div
-    //     style={{
-    //       height: "9000px",
-    //     }}>
-    //   {/* // <ParallaxProvider> */}
-    //     <Project />
-    //     {/* <Project /> */}
-    //   {/* // </ParallaxProvider> */}
-
-    //   </div>
-    <div>
-      <div className="button-container">
+    <div className="index-container">
+      {/* <div className="button-container">
         <button
-          onClick={scrollLeft}
+          onClick={scrollUp}
           disabled={currentPage === 1}
-          onMouseEnter={() => handleMouseEnter("←")}
+          onMouseEnter={() => handleMouseEnter("↑")}
           onMouseLeave={handleMouseLeave}
           className="button-half-page"
-        ></button>
-        {/* <div className="button-column"></div> */}
-        <button
-          onClick={scrollRight}
+        ></button> */}
+      {/* <div className="button-column"></div> */}
+      {/* <button
+          onClick={scrollDown}
           disabled={currentPage === numPages}
-          onMouseEnter={() => handleMouseEnter("→")}
+          onMouseEnter={() => handleMouseEnter("↓")}
           onMouseLeave={handleMouseLeave}
           className="button-half-page"
         ></button>
-      </div>
+      </div> */}
+      <button
+        className="top"
+        onClick={scrollUp}
+        disabled={currentPage === 1 || isMobile()}
+        onMouseEnter={() => handleMouseEnter("↑")}
+        onMouseLeave={handleMouseLeave}
+        // ref={topRef}
+      ></button>
 
-      {/* <p>{currentPage} of {numPages}</p> */}
       <div
         className={`cursor ${cursorClass}`}
         style={{ left: `${position.x}px`, top: `${position.y}px` }}
       >
         {cursorText}
       </div>
+
       <div className="project-wrapper" ref={ref}>
+      <Link
+          to="/deckflow"
+          onMouseEnter={() => handleMouseEnter("view")}
+          onMouseLeave={handleMouseLeave}
+          className="proj-button"
+        >
+          <Project
+            title="DeckFlow"
+            subtitle="Generative AI||Web App develop||UI/UX Design"
+            img="df"
+            pageIndex={1}
+            currentPage={currentPage}
+            numPages={numPages}
+          />
+        </Link>
         <Link
           to="/movie"
           onMouseEnter={() => handleMouseEnter("view")}
@@ -150,9 +183,9 @@ const Home = () => {
         >
           <Project
             title="Movie"
-            subtitle="A Movie Recommendation App||App development||UI/UX Design"
+            subtitle="Movie App||App development||UI/UX Design"
             img="movie"
-            pageIndex={1}
+            pageIndex={2}
             currentPage={currentPage}
             numPages={numPages}
           />
@@ -165,9 +198,9 @@ const Home = () => {
         >
           <Project
             title="Design System"
-            subtitle="Information Architecture||UX Research||UI Redesign"
+            subtitle="UX Research||UI Redesign"
             img="ds"
-            pageIndex={2}
+            pageIndex={3}
             currentPage={currentPage}
             numPages={numPages}
           />
@@ -180,14 +213,38 @@ const Home = () => {
         >
           <Project
             title="HR Portal"
-            subtitle="Information Architecture||UX Research||UI Redesign"
+            subtitle="Info Architecture||UX Research||UI Redesign"
             img="hr"
-            pageIndex={3}
+            pageIndex={4}
+            currentPage={currentPage}
+            numPages={numPages}
+          />
+        </Link>
+        <Link
+          to="/einvoice"
+          onMouseEnter={() => handleMouseEnter("view")}
+          onMouseLeave={handleMouseLeave}
+          className="proj-button"
+        >
+          <Project
+            title="Electronic Invoice"
+            subtitle="Webpage Redeisgn||Web Development||Interaction Design"
+            img="einvoice"
+            pageIndex={5}
             currentPage={currentPage}
             numPages={numPages}
           />
         </Link>
       </div>
+
+      <button
+        className="bottom"
+        onClick={scrollDown}
+        disabled={currentPage === numPages || isMobile()}
+        onMouseEnter={() => handleMouseEnter("↓")}
+        onMouseLeave={handleMouseLeave}
+        // ref={bottomRef}
+      ></button>
     </div>
   );
 };

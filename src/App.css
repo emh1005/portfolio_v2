@@ -74,6 +74,7 @@ html {
   margin: 0;
   background-color: #f6f4eb;
   height: 100%;
+  width: 100%;
   /* scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   -ms-overflow-style: none;
@@ -93,6 +94,14 @@ a {
   text-decoration: none;
   color: #91C8E4;
 } */
+
+::-moz-selection {
+	background-color: rgba(177, 236, 251, .5);
+}
+
+::selection {
+	background-color: rgba(177, 236, 251, .5);
+}
 
 a {
   color: #629fc6;
@@ -189,24 +198,118 @@ li {
   text-transform: lowercase;
 }
 
+.footer {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 10pt;
+}
+
+.index-container {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.top,
+.bottom {
+  /* flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  height: calc(100vh / 5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.top {
+  top: 0px;
+}
+
+.bottom {
+  bottom: 0px;
+}
+
+.top:hover, .bottom:hover {
+  cursor: none;
+}
+
+/* .project-wrapper {
+  flex: 1;
+  overflow: auto;
+} */
+
+.project-wrapper {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  /* gap: 1rem; */
+  /* height: calc(180px + 1rem); */
+  padding: 0;
+  /* max-width: 480px; */
+  width: 100vw;
+  height: 100vh;
+
+  scroll-snap-type: y mandatory;
+  overflow-x: auto;
+  overscroll-behavior-y: contain;
+}
+
+.proj-button {
+  /* border: none;
+  background: transparent; */
+  width: 60vw;
+  height: 100vh;
+
+  /* position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.proj-container {
+  scroll-snap-align: start;
+  height: 100%;
+  width: 100%;
+  /* height: 100vh; */
+  /* max-height: none; */
+  /* width: 100vw; */
+  /* max-width: none; */
+  object-fit: contain;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .project {
   margin: auto;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 2fr 2fr 2fr 1fr 1fr 2fr;
   grid-template-rows: 3fr 3fr 4fr 3fr;
 
-  width: 60%;
-  height: 60vh;
+  /* width: 60%;
+  height: 60vh; */
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
 
   /* border-top: 1px solid;
   border-image: linear-gradient(to left, #000 30%, transparent 0%) 100% 1;
   border-right: 1px solid;
   border-image: linear-gradient(to bottom, #000 30%, transparent 0%) 1; */
-  border: 1.5px solid;
-  border-image: linear-gradient(to bottom left, #ffd37b 15%, transparent 0%) 1;
 
-  margin-top: 20vh;
-  margin-bottom: 0;
+  /* border: 1.5px solid;
+  border-image: linear-gradient(to bottom left, #ffd37b 15%, transparent 0%) 1; */
+
+  /* margin-top: 20vh;
+  margin-bottom: 0; */
 
   position: relative;
   z-index: 1;
@@ -256,7 +359,7 @@ li {
   font-family: mr-eaves-modern, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
-  font-size: 15pt;
+  font-size: 16pt;
   font-weight: 400;
   text-transform: lowercase;
   color: #000;
@@ -370,13 +473,24 @@ section {
   position: fixed;
   top: 0;
   left: 0;
+
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+
   /* width: calc(100vw - 100px);
   height: calc(100vh - 100px); */
   display: grid;
-  grid-template-columns: 50px 1fr 1fr 1fr 50px;
-  grid-template-rows: 50px 1fr 50px;
+  /* grid-template-columns: 50px 1fr 1fr 1fr 50px;
+  grid-template-rows: 50px 1fr 50px; */
+  grid-template-rows: 50px 1fr 1fr 1fr 50px;
+  grid-template-columns: 50px 1fr 50px;
+
   z-index: 0;
   /* margin: 50px; */
+  /* margin-left: auto;
+  margin-right: auto; */
   width: 100vw;
   height: 100vh;
 }
@@ -392,37 +506,12 @@ section {
 }
 
 .button-half-page:last-child {
-  grid-column: 4 / 5;
-  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
 }
 
 .button-half-page:hover {
   cursor: none;
-}
-
-.project-wrapper {
-  margin: 0 auto;
-  display: grid;
-  grid-auto-flow: column;
-  /* gap: 1rem; */
-  /* height: calc(180px + 1rem); */
-  padding: 0;
-  /* max-width: 480px; */
-  width: 100vw;
-  height: 100vh;
-  
-  scroll-snap-type: x mandatory;
-  overflow-y: auto;
-  overscroll-behavior-x: contain;
-}
-
-.proj-container {
-  scroll-snap-align: start;
-  /* height: 100vh; */
-  width: 100vw;
-  max-width: none;
-  object-fit: contain;
-  border-radius: 1rem;
 }
 
 /* .cursor {
@@ -449,13 +538,6 @@ section {
   background-position: center;
   cursor: none;
   transform: translate(-50%, -50%);
-}
-
-.proj-button {
-  border: none;
-  background: transparent;
-  width: 60%;
-  height: 60vh;
 }
 
 @keyframes fadeIn {
@@ -492,9 +574,6 @@ section {
 }
 
 /*Project Page*/
-/* .page-title-container, .page-content-container {
-  width: 65vw;
-} */
 .page p {
   font-size: 11.5pt;
   margin: 0;
@@ -565,7 +644,7 @@ section {
   margin: 0;
   padding: 0;
   text-transform: uppercase; */
-  grid-column: 2 / 3;
+  grid-column: 1 / 3;
   grid-row: 4 / 5;
   align-self: start;
   justify-self: end;
@@ -588,6 +667,10 @@ section {
   align-self: end;
   justify-self: start;
   margin: 0;
+  color: #000;
+  font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 }
 
 .page-desc-password input {
@@ -606,8 +689,8 @@ section {
 }
 
 .page-desc-password button {
-  font-size: 15px;
-  border-radius: 5px;
+  font-size: 14px;
+  /* border-radius: 5px; */
   background-color: transparent;
   border: 0;
   transition: all 0.3s ease;
@@ -693,6 +776,15 @@ section {
   list-style: lower-roman;
 }
 
+.list-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+  padding: 0;
+}
+
 /* .content-body figure, .content-body figcaption {
   margin: 0;
   padding: 0;
@@ -761,4 +853,137 @@ section {
 .about .page-desc-link {
   padding: 0 10px;
   margin: 0;
+}
+
+.about .page-title {
+  font-size: 65px;
+  line-height: 75px;
+}
+
+@media screen and (max-width: 820px) {
+  .sidenav {
+    right: -90px;
+  }
+  .proj-button {
+    width: 70vw;
+  }
+  .proj-title {
+    font-size: 70px;
+  }
+  .proj-subtitle {
+    grid-column: 1 / 5;
+  }
+  .proj-img {
+    width: 100%;
+  }
+  .page-title-container {
+    width: 80vw;
+    height: 75vh;
+  }
+
+  .about .page-title {
+    font-size: 55px;
+    line-height: 65px;
+  }
+  /* .page-title {
+    font-size: 70px;
+  }
+  .page-subtitle, .page-category {
+    font-size: 15pt;
+  } */
+}
+
+@media screen and (max-width: 590px) {
+  .namenav {
+    top: 30px;
+    left: 30px;
+  }
+  .namenav a {
+    font-size: 20px;
+  }
+  .proj-button {
+    width: 95vw;
+  }
+  .proj-title {
+    font-size: 60px;
+    grid-column: 4 / 10;
+    align-self: start;
+    justify-self: end;
+    margin-right: 10px;
+  }
+  .proj-subtitle {
+    align-self: start;
+  }
+  .proj-index {
+    grid-column: 6 / 9;
+    margin-top: 0;
+    margin-top: -5%;
+    align-self: start;
+  }
+  .project .proj-img-sub {
+    display: none;
+  }
+
+  .page p {
+    font-size: 11pt;
+  }
+  .page-img {
+    right: 0;
+  }
+  .page-title-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 4fr 1fr 4fr;
+    overflow: visible;
+  }
+  .page-title {
+    font-size: 50px;
+  }
+  .page-subtitle {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .page-desc {
+    grid-row: 3 / 4;
+  }
+  .page-desc-link,
+  .page-desc-password {
+    grid-row: 4 / 5;
+  }
+  .page-validate {
+    grid-row: 5 / 6;
+  }
+  .page-desc-password button {
+    -webkit-appearance: none;
+    color: #000;
+    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  }
+  .page-category {
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+    align-self: start;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .content-container {
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 90vw;
+  }
+  .content-body {
+    grid-column: 1 / 2;
+  }
+  .content-whole img {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+
+  .about .page-title {
+    font-size: 50px;
+    line-height: 60px;
+  }
 }

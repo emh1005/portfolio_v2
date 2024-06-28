@@ -4,25 +4,56 @@ const Movie = () => {
       <img src="/img/movie-bg.png" alt="Movie" className="page-img" />
 
       <div className="page-title-container">
-        <h1 className="page-title">A Movie Review App</h1>
-        <h2 className="page-subtitle">A Movie Review App // 2023.10-current</h2>
+        <h1 className="page-title">Movie Review</h1>
+        <h2 className="page-subtitle">2023.10-current</h2>
         <h2 className="page-category">
           App development
+          <br />
+          React Native
           <br />
           UI/UX Design
         </h2>
         <p className="page-desc">
-          This app provides a solution to this problem by offering a platform
-          where users can rate and review films, as well as curate and share
-          movie playlists based on various themes such as genre. Users can also
-          browse and follow playlists curated by others, allowing them to rate
-          and review a diverse range of films. This fosters a sense of community
-          among users, connecting them through their shared love for movies.
+          This app, developed in React Native and Expo, offers a platform where
+          users can rate and review films, as well as curate and share movie
+          playlists based on various themes such as genre. Users can also browse
+          and follow playlists curated by others, allowing them to rate and
+          review a diverse range of films.
+          <br />
+          <br />
+          In collaboration with Leo Yeh.
         </p>
       </div>
 
       <div className="content-container">
-        <div className="content-header">Target Audience</div>
+        <div className="content-header">Process</div>
+        <div className="content-body">
+          <p>
+            <ul>
+              {/* <li>
+                <b>Research</b>: Conducted user research to understand the
+                target audience and their needs
+              </li> */}
+              <li>
+                <b>Design</b>: Designed the user interface and user experience
+                of the app in Figma, the visual identity is inspired by
+                old-fashioned movie ticket stubs, and each movie is represented
+                by a ticket stub with custom colors.
+              </li>
+              <li>
+                <b>Development</b>: Developed the app using React Native and
+                Expo, with a backend database in Firebase. The movies are
+                fetched from the TMDB API with a custom hook alongside a custom
+                backend to generate the custom color scheme from the movie
+                poster for each movie, and stored in the Firebase database.
+                <br />
+                The app is currently still in development, with the following
+                features already implemented, and more features to come.
+              </li>
+            </ul>
+          </p>
+        </div>
+        {/* <div className="content-header">Target Audience</div>
         <div className="content-body">
           <p>
             <ul>
@@ -31,16 +62,9 @@ const Movie = () => {
                 explore new films that align with their preferences and
                 emotional states.
               </li>
-              <li>
-                Movie lovers who enjoy watching and discovering new movies
-              </li>
-              <li>
-                Movie lovers who want to connect with others who have similar
-                tastes and moods
-              </li>
             </ul>
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div className="content-whole">

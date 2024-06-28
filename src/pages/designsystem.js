@@ -6,8 +6,8 @@ const DesignSystem = () => {
       <div className="page-title-container">
         <h1 className="page-title">Design System</h1>
         <h2 className="page-category">
-          Information Architecture
-          <br />
+          {/* Information Architecture
+          <br /> */}
           UX Research
           <br />
           UI Redesign
@@ -20,9 +20,8 @@ const DesignSystem = () => {
           deliver a cohesive visual and interactive experience for the users.
         </p>
         <p className="page-desc-link">
-          <a href="https://www.esunbank.com.tw/bank/personal">
-            Visit E.Sun Bank's new homepage designed based on the design system
-            &gt;
+          <a href="https://www.esunbank.com.tw/bank/personal" target="_blank">
+            Visit E.Sun Bank's new homepage based on the design system &gt;
           </a>
         </p>
       </div>
